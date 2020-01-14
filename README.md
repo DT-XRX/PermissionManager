@@ -1,5 +1,5 @@
 # PermissionManager
-![ScreenShot](https://github.com/DT-XRX/PermissionManager/blob/master/demo.gif?raw=true)
+![ScreenShot](https://github.com/karanchuri/PermissionManager/blob/master/demo.gif?raw=true)
 
 
 This Library automatically search for permission in androidmanifests file and request for the same. Also, if request is cancelled it shows a popup window with alert to grant permission. If the app can no longer request permission due to "Don't ask again" on permission it will toast a message to grant permission from settings. All the action performed after grant or deny can be customized by overriding method shown below. Custom permission can be checked instead of all permission in androidmanifests file.
