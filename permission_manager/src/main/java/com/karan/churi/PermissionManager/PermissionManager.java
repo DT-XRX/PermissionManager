@@ -11,14 +11,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -137,18 +131,13 @@ public abstract class PermissionManager {
         Toast.makeText(activity.getApplicationContext(), "Go to settings and enable permissions", Toast.LENGTH_LONG).show();
     }
     private void showDialogOK(Activity activity,String message, DialogInterface.OnClickListener okListener) {
-        AlertDialog builder = new AlertDialog(activity);
-        builder.setMessage(message);
-        builder.setPositiveButton("OK", okListener);
-        builder.setCancelable(false);
-        builder.create();
-        builder.show();
-        Button positiveButton=builder.getButton(AlertDialog.BUTTON_POSITIVE);
-        LinearLayout parent=(LinearLayout)positiveButton.getParent();
-        parent.setGravity(Gravity.CENTER_HORIZONTAL);
-        parent.setPadding(0,0,0,0);
-        View leftSpacer=parent.getChildAt(1);
-        leftSpacer.setVisibility(View.GONE);
+        new AlertDialog.Builder(activity)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", okListener)
+                .setCancelable(false);
+                .create()
+                .show();
     }
     public class statusArray{
         statusArray(ArrayList<String> granted,ArrayList<String> denied){
